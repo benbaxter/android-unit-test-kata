@@ -8,4 +8,9 @@ public class PasswordValidator implements FieldValidator {
     public int validate(String password) {
         return R.string.success;
     }
+
+    @Override
+    public boolean isValid(String password) {
+        return validate(password) == R.string.success;
+    }
 }
