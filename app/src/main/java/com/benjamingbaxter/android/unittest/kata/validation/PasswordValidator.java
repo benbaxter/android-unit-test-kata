@@ -6,6 +6,10 @@ public class PasswordValidator implements FieldValidator {
 
     @Override
     public int validate(String password) {
+        if( password == null || password.trim().isEmpty() ) {
+            return R.string.error_field_required;
+        }
+
         return R.string.success;
     }
 
