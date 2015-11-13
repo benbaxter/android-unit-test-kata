@@ -25,6 +25,18 @@ public class PasswordValidatorTest {
     }
 
     @Test
+    public void nullPassword() {
+        int status = validator.validate(null);
+        assertThat(status, is(equalTo(R.string.error_field_required)));
+    }
+
+    @Test
+    public void emptyPassword() {
+        int status = validator.validate("");
+        assertThat(status, is(equalTo(R.string.error_field_required)));
+    }
+
+    @Test
     public void isValidPassword() {
         assertThat(validator.isValid("password"), is(true));
     }
