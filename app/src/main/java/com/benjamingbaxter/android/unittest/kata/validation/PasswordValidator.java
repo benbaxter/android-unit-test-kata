@@ -1,12 +1,14 @@
 package com.benjamingbaxter.android.unittest.kata.validation;
 
+import android.text.TextUtils;
+
 import com.benjamingbaxter.android.unittest.kata.R;
 
 public class PasswordValidator implements FieldValidator {
 
     @Override
     public int validate(String password) {
-        if( password == null || password.trim().isEmpty() ) {
+        if(TextUtils.isEmpty(password)) {
             return R.string.error_field_required;
         }
 
