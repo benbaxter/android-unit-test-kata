@@ -1,4 +1,6 @@
-package com.benjamingbaxter.android.unittest.kata;
+package com.benjamingbaxter.android.unittest.kata.validation;
+
+import com.benjamingbaxter.android.unittest.kata.R;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -20,5 +22,10 @@ public class PasswordValidatorTest {
     public void validPassword() {
         int statusMessageResId = validator.validate("password1");
         assertThat(statusMessageResId, is(equalTo(R.string.success)));
+    }
+
+    @Test
+    public void isValidPassword() {
+        assertThat(validator.isValid("password"), is(true));
     }
 }

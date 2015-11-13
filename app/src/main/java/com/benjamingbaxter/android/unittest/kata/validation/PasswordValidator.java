@@ -1,4 +1,6 @@
-package com.benjamingbaxter.android.unittest.kata;
+package com.benjamingbaxter.android.unittest.kata.validation;
+
+import com.benjamingbaxter.android.unittest.kata.R;
 
 public class PasswordValidator implements FieldValidator {
 
