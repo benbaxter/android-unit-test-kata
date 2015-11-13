@@ -21,7 +21,22 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.0'
     compile 'com.android.support:design:23.1.0'
+
+
+    //junit 4
+    testCompile 'junit:junit:4.12'
+    //assertj is an expressive optional library to make your assert statements read better
+    //and produce more understandable failure messages. http://joel-costigliola.github.io/assertj/
+    testCompile 'org.assertj:assertj-core:1.7.1'
+    //hamcrest, because using matchers for assertions is simple, elegant, and easy!
+    testCompile 'org.hamcrest:hamcrest-all:1.3'
+    //mockito, because mocking by hand is hard work
+    testCompile 'org.mockito:mockito-core:1.10.19'
+
+    //power mock, when you have those pesky static methods that you just want to return
+    //something else based on the behavior that you are testing
+    testCompile 'org.powermock:powermock-module-junit4:1.6.2'
+    testCompile 'org.powermock:powermock-api-mockito:1.6.2'
 }
