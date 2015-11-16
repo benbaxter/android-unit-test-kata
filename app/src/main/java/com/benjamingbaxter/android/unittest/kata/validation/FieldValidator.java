@@ -1,6 +1,6 @@
 package com.benjamingbaxter.android.unittest.kata.validation;
 
 public interface FieldValidator {
-    int validate(String password);
-    boolean isValid(String password);
+    int validate(String field);
+    boolean isValid(String field);
 }

@@ -29,6 +29,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.benjamingbaxter.android.unittest.kata.validation.EmailValidator;
 import com.benjamingbaxter.android.unittest.kata.validation.FieldValidator;
 import com.benjamingbaxter.android.unittest.kata.validation.PasswordValidator;
 
@@ -61,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
     private View mProgressView;
     private View mLoginFormView;
 
+    private FieldValidator emailValidator;
     private FieldValidator passwordValidator;
 
     @Override
@@ -93,6 +95,7 @@ public class LoginActivity extends AppCompatActivity {
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
 
+        emailValidator = new EmailValidator();
         passwordValidator = new PasswordValidator();
     }
 
@@ -125,12 +128,8 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         // Check for a valid email address.
-        if (TextUtils.isEmpty(email)) {
-            mEmailView.setError(getString(R.string.error_field_required));
-            focusView = mEmailView;
-            cancel = true;
-        } else if (!isEmailValid(email)) {
-            mEmailView.setError(getString(R.string.error_invalid_email));
+        if (! emailValidator.isValid(email)) {
+            mEmailView.setError(getString(emailValidator.validate(email)));
             focusView = mEmailView;
             cancel = true;
         }
@@ -146,11 +145,6 @@ public class LoginActivity extends AppCompatActivity {
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
         }
-    }
-
-    private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
-        return email.contains("@");
     }
 
     /**
