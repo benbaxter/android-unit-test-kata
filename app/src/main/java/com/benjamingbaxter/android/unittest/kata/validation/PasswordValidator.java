@@ -12,6 +12,10 @@ public class PasswordValidator implements FieldValidator {
             return R.string.error_field_required;
         }
 
+        if( password.length() < 8 ) {
+            return R.string.error_invalid_password;
+        }
+
         return R.string.success;
     }
 

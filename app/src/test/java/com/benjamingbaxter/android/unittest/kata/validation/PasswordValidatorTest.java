@@ -38,6 +38,12 @@ public class PasswordValidatorTest {
     }
 
     @Test
+    public void tooShortPassword() {
+        int statusMessageResId = validator.validate("pass");
+        assertThat(statusMessageResId, is(equalTo(R.string.error_invalid_password)));
+    }
+
+    @Test
     public void nullPassword() {
         when(TextUtils.isEmpty(anyString())).thenReturn(true);
 
@@ -48,7 +54,7 @@ public class PasswordValidatorTest {
     @Test
     public void emptyPassword() {
         when(TextUtils.isEmpty(anyString())).thenReturn(true);
-        
+
         int status = validator.validate("");
         assertThat(status, is(equalTo(R.string.error_field_required)));
     }
